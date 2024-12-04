@@ -14,5 +14,7 @@
 ## ❇ SOCIALS ❇
 ### ♤ YouTube: [CYBERWARE-TECH](https://www.youtube.com/@CYBERWARE-TECH)
 ### ✯ Discord: t3nx1l
+## 📜 COMPRESSED FILE PASSWORD 📜
+### PASSWORD: [... --- .--. .-. .- -. ---] {"SOPRANO" IN MORSE}<br><br><br>
 ## 🔴 Malware Test Video (**The first one who makes a video testing it will post it here!!**). 🔴
 ### YouTube Link: [**NO LINK FOR NOW**]
