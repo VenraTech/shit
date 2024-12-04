@@ -13,8 +13,6 @@
 ### For testing and study purposes, I strongly recommend using virtual machines like VMware or VirtualBox.<br><br>
 ## ❇ SOCIALS ❇
 ### ♤ YouTube: [CYBERWARE-TECH](https://www.youtube.com/@CYBERWARE-TECH)
-### ✯ Discord: t3nx1l
-## 📜 COMPRESSED FILE PASSWORD 📜
-### PASSWORD: [... --- .--. .-. .- -. ---] {"SOPRANO" IN MORSE}<br><br><br>
+### ✯ Discord: t3nx1l<br>
 ## 🔴 Malware Test Video (**The first one who makes a video testing it will post it here!!**). 🔴
 ### YouTube Link: [**NO LINK FOR NOW**]
