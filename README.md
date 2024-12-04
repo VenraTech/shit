@@ -1,0 +1,2 @@
+# Soprano
+TrojanGDI.Win32
