@@ -235,12 +235,15 @@ namespace PayloadsGdi
 
 			RGBQUAD* rgbquad = (RGBQUAD*)bits;
 
+			int centerX = w / 2;
+			int centerY = h / 2;
+
 			for (int x = 0; x < w; x++)
 			{
 				for (int y = 0; y < h; y++)
 				{
-					int dx = x - 1000;
-					int dy = y - 500;
+					int dx = x - centerX;
+					int dy = y - centerY;
 					double distance = sqrt(dx * dx * dy * dy);
 
 					if (distance <= radius)
