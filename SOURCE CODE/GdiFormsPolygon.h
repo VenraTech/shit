@@ -1,8 +1,12 @@
-#include "soprano.h"
-#define PI 3.14159265358979
+typedef struct IUnknown IUnknown;
 
-namespace PolygonsFormsGdi
+#pragma once
+
+#include "soprano.h"
+
+namespace PolygonsForms
 {
+
     typedef struct { float x; float y; float z; } VERTEX;
     typedef struct { int vtx0; int vtx1; } EDGE;
 
@@ -81,7 +85,11 @@ namespace PolygonsFormsGdi
 
     DWORD WINAPI Hexagon(LPVOID lpvd)
     {
-        float size = (PayloadsGdi::w + PayloadsGdi::h) / 10;
+        HDC dc = GetDC(NULL);
+        int w = GetSystemMetrics(0);
+        int h = GetSystemMetrics(1);
+
+        float size = (w + h) / 10;
         float radius = size / 2;
 
         int cx = size;
@@ -130,7 +138,7 @@ namespace PolygonsFormsGdi
 
             for (int i = 0; i < totedg; i++)
             {
-                DrawEdge(PayloadsGdi::dc, icons[index],
+                DrawEdge(dc, icons[index],
                     vtx[edges[i].vtx0].x + cx, vtx[edges[i].vtx0].y + cy,
                     vtx[edges[i].vtx1].x + cx, vtx[edges[i].vtx1].y + cy, 20);
             }
@@ -141,13 +149,13 @@ namespace PolygonsFormsGdi
             cx += xdv;
             cy += ydv;
 
-            if (cx > PayloadsGdi::w - (size / 2) || cx < -(size / 2))
+            if (cx > w - (size / 2) || cx < -(size / 2))
             {
                 xdv *= -1;
                 index = rand() % 4;
             }
 
-            if (cy > PayloadsGdi::h - (size / 2) || cy < -(size / 2))
+            if (cy > h - (size / 2) || cy < -(size / 2))
             {
                 ydv *= -1;
                 index = rand() % 4;
@@ -159,7 +167,11 @@ namespace PolygonsFormsGdi
 
     DWORD WINAPI Triangle(LPVOID lpvd)
     {
-        float size = (PayloadsGdi::w + PayloadsGdi::h) / 10;
+        HDC dc = GetDC(NULL);
+        int w = GetSystemMetrics(0);
+        int h = GetSystemMetrics(1);
+
+        float size = (w + h) / 10;
 
         int cx = size;
         int cy = size;
@@ -203,7 +215,7 @@ namespace PolygonsFormsGdi
 
             for (int i = 0; i < totedg; i++)
             {
-                DrawEdge(PayloadsGdi::dc, icons[index],
+                DrawEdge(dc, icons[index],
                     vtx[edges[i].vtx0].x + cx, vtx[edges[i].vtx0].y + cy,
                     vtx[edges[i].vtx1].x + cx, vtx[edges[i].vtx1].y + cy, 20);
             }
@@ -214,13 +226,13 @@ namespace PolygonsFormsGdi
             cx += xdv;
             cy += ydv;
 
-            if (cx > PayloadsGdi::w - (size / 2) || cx < -(size / 2))
+            if (cx > w - (size / 2) || cx < -(size / 2))
             {
                 xdv *= -1;
                 index = rand() % 4;
             }
 
-            if (cy > PayloadsGdi::h - (size / 2) || cy < -(size / 2))
+            if (cy > h - (size / 2) || cy < -(size / 2))
             {
                 ydv *= -1;
                 index = rand() % 4;
