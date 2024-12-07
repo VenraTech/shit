@@ -1,13 +1,11 @@
-#include "soprano.h"
-#include <math.h>
+typedef struct IUnknown IUnknown;
 
+#pragma once
+
+#include "soprano.h"
 
 namespace PayloadsGdi
 {
-	static HDC dc = GetDC(NULL);
-	static HDC dcCopy = CreateCompatibleDC(dc);
-	static int w = GetSystemMetrics(0), h = GetSystemMetrics(1);
-
 	VOID ClearEffect(void)
 	{
 		RedrawWindow(NULL, NULL, NULL, RDW_INVALIDATE | RDW_ERASE | RDW_ALLCHILDREN);
@@ -15,6 +13,11 @@ namespace PayloadsGdi
 
 	DWORD WINAPI Load1(LPVOID lpvd)
 	{
+		HDC dc = GetDC(NULL);
+		HDC dcCopy = CreateCompatibleDC(dc);
+		int w = GetSystemMetrics(0);
+		int h = GetSystemMetrics(1);
+
 		BITMAPINFO bmpi = { 0 };
 		HBITMAP bmp;
 
@@ -25,14 +28,15 @@ namespace PayloadsGdi
 		bmpi.bmiHeader.biBitCount = 32;
 		bmpi.bmiHeader.biCompression = BI_RGB;
 
-		RGBQUAD* rgbquad = NULL;
-		bmp = CreateDIBSection(dc, &bmpi, DIB_RGB_COLORS, (void**)&rgbquad, NULL, 0);
+		VOID* ppvBits;
+		bmp = CreateDIBSection(dc, &bmpi, DIB_RGB_COLORS, &ppvBits, NULL, 0);
 		SelectObject(dcCopy, bmp);
 
 		double time = 0.0;
 		double radius = 0.0;
 		while (1)
 		{
+			RGBQUAD* rgbquad = (RGBQUAD*)ppvBits;
 			for (int x = 0; x < w; x++)
 			{
 				for (int y = 0; y < h; y++)
@@ -60,6 +64,11 @@ namespace PayloadsGdi
 
 	DWORD WINAPI Load2(LPVOID lpvd)
 	{
+		HDC dc = GetDC(NULL);
+		HDC dcCopy = CreateCompatibleDC(dc);
+		int w = GetSystemMetrics(0);
+		int h = GetSystemMetrics(1);
+
 		BITMAPINFO bmpi = { 0 };
 		HBITMAP bmp;
 
@@ -70,13 +79,14 @@ namespace PayloadsGdi
 		bmpi.bmiHeader.biBitCount = 32;
 		bmpi.bmiHeader.biCompression = BI_RGB;
 
-		RGBQUAD* rgbquad = NULL;
-		bmp = CreateDIBSection(dc, &bmpi, DIB_RGB_COLORS, (void**)&rgbquad, NULL, 0);
+		VOID* ppvBits;
+		bmp = CreateDIBSection(dc, &bmpi, DIB_RGB_COLORS, &ppvBits, NULL, 0);
 		SelectObject(dcCopy, bmp);
 
 		double time = 0.0;
 		while (1)
 		{
+			RGBQUAD* rgbquad = (RGBQUAD*)ppvBits;
 			for (int x = 0; x < w; x++)
 			{
 				for (int y = 0; y < h; y++)
@@ -103,6 +113,11 @@ namespace PayloadsGdi
 
 	DWORD WINAPI Load3(LPVOID lpvd)
 	{
+		HDC dc = GetDC(NULL);
+		HDC dcCopy = CreateCompatibleDC(dc);
+		int w = GetSystemMetrics(0);
+		int h = GetSystemMetrics(1);
+
 		BITMAPINFO bmpi = { 0 };
 		HBITMAP bmp;
 
@@ -113,13 +128,14 @@ namespace PayloadsGdi
 		bmpi.bmiHeader.biBitCount = 32;
 		bmpi.bmiHeader.biCompression = BI_RGB;
 
-		RGBQUAD* rgbquad = NULL;
-		bmp = CreateDIBSection(dc, &bmpi, DIB_RGB_COLORS, (void**)&rgbquad, NULL, 0);
+		VOID* ppvBits;
+		bmp = CreateDIBSection(dc, &bmpi, DIB_RGB_COLORS, &ppvBits, NULL, 0);
 		SelectObject(dcCopy, bmp);
 
 		double time = 0.0;
 		while (1)
 		{
+			RGBQUAD* rgbquad = (RGBQUAD*)ppvBits;
 			for (int x = 0; x < w; x++)
 			{
 				for (int y = 0; y < h; y++)
@@ -146,6 +162,10 @@ namespace PayloadsGdi
 	{
 		while (1)
 		{
+			HDC dc = GetDC(NULL);
+			HDC dcCopy = CreateCompatibleDC(dc);
+			int w = GetSystemMetrics(0);
+			int h = GetSystemMetrics(1);
 
 			for (int e = 32; e <= 44239; e++)
 			{
@@ -165,6 +185,11 @@ namespace PayloadsGdi
 	{
 		while (1)
 		{
+			HDC dc = GetDC(NULL);
+			HDC dcCopy = CreateCompatibleDC(dc);
+			int w = GetSystemMetrics(0);
+			int h = GetSystemMetrics(1);
+
 			POINT pt;
 			GetCursorPos(&pt);
 			DrawIcon(dc, pt.x, pt.y, LoadIcon(0, IDI_ERROR));
@@ -192,6 +217,11 @@ namespace PayloadsGdi
 		{
 			for (int i = 0; i <= 1000; i++)
 			{
+				HDC dc = GetDC(NULL);
+				HDC dcCopy = CreateCompatibleDC(dc);
+				int w = GetSystemMetrics(0);
+				int h = GetSystemMetrics(1);
+
 				CURSORINFO curinf;
 				DrawIcon(dc, rand() % w, rand() % h, LoadIcon(0, IDI_ERROR));
 				DrawIcon(dc, rand() % w, rand() % h, LoadIcon(0, IDI_APPLICATION));
@@ -215,6 +245,11 @@ namespace PayloadsGdi
 
 	DWORD WINAPI Load6(LPVOID lpvd)
 	{
+		HDC dc = GetDC(NULL);
+		HDC dcCopy = CreateCompatibleDC(dc);
+		int w = GetSystemMetrics(0);
+		int h = GetSystemMetrics(1);
+
 		BITMAPINFO bmpi = { 0 };
 		bmpi.bmiHeader.biSize = sizeof(bmpi);
 		bmpi.bmiHeader.biWidth = w;
@@ -223,8 +258,8 @@ namespace PayloadsGdi
 		bmpi.bmiHeader.biBitCount = 32;
 		bmpi.bmiHeader.biCompression = BI_RGB;
 
-		VOID* bits;
-		HBITMAP hBitmap = CreateDIBSection(dc, &bmpi, DIB_RGB_COLORS, &bits, NULL, 0);
+		VOID* ppvBits;
+		HBITMAP hBitmap = CreateDIBSection(dc, &bmpi, DIB_RGB_COLORS, &ppvBits, NULL, 0);
 		SelectObject(dcCopy, hBitmap);
 
 		int radius = 50;
@@ -233,7 +268,7 @@ namespace PayloadsGdi
 		{
 			StretchBlt(dcCopy, 0, 0, w, h, dc, 0, 0, w, h, SRCCOPY);
 
-			RGBQUAD* rgbquad = (RGBQUAD*)bits;
+			RGBQUAD* rgbquad = (RGBQUAD*)ppvBits;
 
 			int centerX = w / 2;
 			int centerY = h / 2;
