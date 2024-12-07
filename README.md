@@ -3,7 +3,7 @@
 ### Language: C++ & Assembly x86
 ### Version: 1.0
 ### Category: TrojanGdi.Win32
-### Compatible Platforms: WinXP, WinVista, Win7 (For some reason unknown to me, the GDI did not work on it!), Win8, Win8.1, Win10, Win11
+### Compatible Platforms: WinXP, WinVista, Win7, Win8, Win8.1, Win10, Win11
 ## 🚫 PHOTOSENSITIVE SEIZURE WARNING 🚫
 ### Specific Graphic Effects? YES
 ### Loud or Intense Audio? YES<br><br>
