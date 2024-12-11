@@ -15,5 +15,5 @@
 ### ♤ YouTube: [CYBERWARE-TECH](https://www.youtube.com/@CYBERWARE-TECH)
 ### ✯ Discord: t3nx1l<br>
 ## 🔴  Malware Test Video  🔴
-### YouTube Link 1 (Made by 'Heitor Gomes Ferreira'): [https://youtu.be/uqa86K0ZpH4]
-### YouTube Link 2 (Made by 'Joaozz1nn'): [WAITING FOR THE VIDEO TO RELEASE...]
+### Made by Heitor Gomes Ferreira: [https://youtu.be/uqa86K0ZpH4]
+### Made by Joaozz1nn: [WAITING FOR THE VIDEO TO RELEASE...]
