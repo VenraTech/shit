@@ -6,25 +6,25 @@ typedef struct IUnknown IUnknown;
 
 namespace PolygonsForms
 {
+    typedef struct VERTEX { float x, y, z; };
 
-    typedef struct { float x, y, z; } VERTEX;
-    typedef struct { int vtx0, vtx1; } EDGE;
+    typedef struct EDGE { int vtx0, vtx1; };
 
-    VOID RotateX(VERTEX* vtx, float angle)
+    VOID RotX(VERTEX* vtx, float angle)
     {
         float tempY = vtx->y;
         vtx->y = cos(angle) * tempY - sin(angle) * vtx->z;
         vtx->z = sin(angle) * tempY + cos(angle) * vtx->z;
     }
 
-    VOID RotateY(VERTEX* vtx, float angle)
+    VOID RotY(VERTEX* vtx, float angle)
     {
         float tempX = vtx->x;
         vtx->x = cos(angle) * tempX + sin(angle) * vtx->z;
         vtx->z = -sin(angle) * tempX + cos(angle) * vtx->z;
     }
 
-    VOID RotateZ(VERTEX* vtx, float angle)
+    VOID RotZ(VERTEX* vtx, float angle)
     {
         float tempX = vtx->x;
         vtx->x = cos(angle) * tempX - sin(angle) * vtx->y;
@@ -33,18 +33,38 @@ namespace PolygonsForms
 
     VOID DrawEdge(HDC dc, LPCWSTR icon, int x0, int y0, int x1, int y1)
     {
-        int dx = abs(x1 - x0), dy = abs(y1 - y0);
-        int sx = (x0 < x1) ? 1 : -1, sy = (y0 < y1) ? 1 : -1;
-        int error = dx - dy;
+        int i = 0;
 
-        while (true) 
+        int dx = abs(x1 - x0), dy = -abs(y1 - y0);
+        int sx = (x0 < x1) ? 1 : -1, sy = (y0 < y1) ? 1 : -1;
+
+        int error = dx + dy;
+
+        while (true)
         {
+            if (i == 0) 
+            { 
+                DrawIcon(dc, x0, y0, LoadIcon(NULL, icon));
+                i = 10; 
+            }
+            else i--;
+
             if (x0 == x1 && y0 == y1) break;
-            DrawIcon(dc, x0, y0, LoadIcon(NULL, icon));
+
             int e2 = 2 * error;
 
-            if (e2 >= dy) { error += dy; x0 += sx; }
-            if (e2 <= dx) { error += dx; y0 += sy; }
+            if (e2 >= dy) 
+            { 
+                if (x0 == x1) break;
+
+                error += dy; x0 += sx; 
+            }
+            if (e2 <= dx) 
+            {
+                if (y0 == y1) break;
+
+                error += dx; y0 += sy; 
+            }
         }
     }
 
@@ -96,16 +116,16 @@ namespace PolygonsForms
         {
             for (int i = 0; i < totvtx; i++)
             {
-                RotateX(&vtx[i], angleX);
-                RotateY(&vtx[i], angleY);
-                RotateZ(&vtx[i], angleZ);
+                RotX(&vtx[i], angleX);
+                RotY(&vtx[i], angleY);
+                RotZ(&vtx[i], angleZ);
             }
 
             for (int i = 0; i < totedg; i++)
             {
                 DrawEdge(dc, icons[index],
                     vtx[edges[i].vtx0].x + cx, vtx[edges[i].vtx0].y + cy,
-                    vtx[edges[i].vtx1].x + cx, vtx[edges[i].vtx1].y + cy, 20);
+                    vtx[edges[i].vtx1].x + cx, vtx[edges[i].vtx1].y + cy);
             }
 
             Sleep(40);
@@ -173,16 +193,16 @@ namespace PolygonsForms
         {
             for (int i = 0; i < totvtx; i++)
             {
-                RotateX(&vtx[i], angleX);
-                RotateY(&vtx[i], angleY);
-                RotateZ(&vtx[i], angleZ);
+                RotX(&vtx[i], angleX);
+                RotY(&vtx[i], angleY);
+                RotZ(&vtx[i], angleZ);
             }
 
             for (int i = 0; i < totedg; i++)
             {
                 DrawEdge(dc, icons[index],
                     vtx[edges[i].vtx0].x + cx, vtx[edges[i].vtx0].y + cy,
-                    vtx[edges[i].vtx1].x + cx, vtx[edges[i].vtx1].y + cy, 20);
+                    vtx[edges[i].vtx1].x + cx, vtx[edges[i].vtx1].y + cy);
             }
 
             Sleep(40);
