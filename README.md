@@ -15,5 +15,4 @@
 ### ♤ YouTube: [CYBERWARE-TECH](https://www.youtube.com/@CYBERWARE-TECH)
 ### ✯ Discord: t3nx1l<br>
 ## 🔴  Test Video  🔴
-### Made by Heitor Gomes Ferreira: [https://youtu.be/uqa86K0ZpH4]
-### Made by Joaozz1nn: [WAITING FOR THE VIDEO TO RELEASE...]
+### Made by Joaozz1nn: [https://www.youtube.com/watch?v=EtLaJMoRJ4s]
